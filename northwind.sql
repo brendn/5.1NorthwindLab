@@ -47,6 +47,9 @@ SELECT * FROM customers RIGHT JOIN orders on orders.customer_id = customers.id
 # Use a join to get the ship city and ship country of all the orders which are associated with an employee who is in London.
 SELECT ship_country_region, ship_city FROM orders INNER JOIN employees ON employees.id = orders.employee_id AND employees.country_region = 'London'
 
+# Use a join to get the ship name of all orders that include a discontinued product. (See orders, order details, and products. 1 means discontinued.)
+SELECT ship_name FROM orders JOIN order_details od ON orders.id = od.order_id JOIN products p ON od.product_id = p.id WHERE discontinued = 1;
+
 # Get employees’ firstname for all employees who report to no one.
 #### My database didn't have this column, so I'm guessing here
 SELECT first_name FROM employees WHERE reports_to = NULL
